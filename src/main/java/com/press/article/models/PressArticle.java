@@ -3,6 +3,7 @@ package com.press.article.models;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,9 @@ public class PressArticle {
     private Long id;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Content content;
+    //@NotBlank(message = "Publication date is mandatory.")
     private Date publicationDate;
+    @NotBlank(message = "Magazine name is mandatory.")
     private String magazineName;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Author author;
